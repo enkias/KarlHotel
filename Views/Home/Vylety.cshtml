@@ -1,0 +1,209 @@
+@{
+    ViewData["Title"] = "Tipy na výlety – Hotel Karl Špičák";
+    ViewData["Description"] = "Tipy na výlety ze Špičáku – Černé jezero, Čertovo jezero, Bílá strž, Pancíř, lyžování, cyklistika. Hotel Karl Železná Ruda, Šumava.";
+}
+
+<!-- NAV -->
+<nav class="bg-forest-800 sticky top-0 z-50 px-6 py-4 shadow-lg">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <a href="/" class="text-white font-display text-xl font-bold tracking-wide">Hotel Karl <span class="text-forest-400">★★★</span></a>
+        <div class="hidden md:flex items-center gap-7 text-sm text-white/80 font-medium">
+            <a href="/#pokoje"     class="hover:text-white transition-colors">Pokoje</a>
+            <a href="/restaurace"  class="hover:text-white transition-colors">Restaurace</a>
+            <a href="/vylety"      class="text-white font-semibold border-b border-forest-400">Výlety</a>
+            <a href="/galerie"     class="hover:text-white transition-colors">Galerie</a>
+            <a href="/#kontakt"    class="hover:text-white transition-colors">Kontakt</a>
+            <a href="/#rezervace"  class="bg-forest-600 hover:bg-forest-500 text-white px-5 py-2 rounded-full transition-colors font-semibold">Rezervovat</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative h-80 sm:h-[26rem] overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80"
+         alt="Šumavská příroda" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/20 to-transparent"></div>
+    <div class="absolute bottom-10 left-6 right-6 max-w-6xl mx-auto">
+        <span class="text-forest-400 text-xs font-bold uppercase tracking-widest">Tipy na výlety</span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mt-1">Co vás čeká<br/>na Šumavě</h1>
+    </div>
+</section>
+
+<!-- VZDÁLENOSTI -->
+<section class="py-6 bg-forest-800">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-wrap gap-6 justify-center text-center">
+            @{
+                var distances = new[] {
+                    ("🎿", "Ski areál Špičák", "0 km"),
+                    ("🚡", "Lanovka na Špičák", "< 1 km"),
+                    ("🏔️", "Vrchol Pancíř",      "2,5 km"),
+                    ("🌊", "Čertovo jezero",      "2,5 km"),
+                    ("🌊", "Černé jezero",         "3,5 km"),
+                    ("💧", "Vodopád Bílá strž",   "6 km"),
+                };
+            }
+            @foreach (var (icon, name, dist) in distances)
+            {
+                <div class="text-white/90">
+                    <span class="text-xl">@icon</span>
+                    <p class="text-xs font-semibold mt-1">@name</p>
+                    <p class="text-forest-300 text-xs font-bold">@dist</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- AKTIVITY -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 space-y-20">
+
+        <!-- LYŽOVÁNÍ -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=700&q=80"
+                     alt="Lyžování Špičák" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl" />
+                <span class="absolute top-4 left-4 bg-forest-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">Zima</span>
+                <span class="absolute top-4 right-4 bg-black/50 text-white text-xs font-semibold px-3 py-1.5 rounded-full">0 km od hotelu</span>
+            </div>
+            <div>
+                <span class="text-forest-600 text-xs font-bold uppercase tracking-widest">Ski areál Špičák</span>
+                <h2 class="font-display text-3xl font-bold text-stone-900 mt-2 mb-4">Lyžování přímo u hotelu</h2>
+                <p class="text-stone-600 leading-relaxed mb-5">
+                    Ski areál Špičák se nachází přímo u hotelu – oblékněte lyže a jdete na svah. Trasy pro všechny úrovně, od začátečnických do červených. Půjčovna lyží v areálu.
+                </p>
+                <ul class="space-y-2">
+                    @foreach (var b in new[] { "Sjezdové tratě pro všechny úrovně", "Snowpark a dětský park", "Půjčovna lyžařského vybavení", "Lyžařská škola v areálu" })
+                    {
+                        <li class="flex items-center gap-2 text-sm text-stone-600">
+                            <svg class="w-4 h-4 text-forest-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            @b
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <!-- JEZERA / TURISTIKA -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <span class="text-forest-600 text-xs font-bold uppercase tracking-widest">Ledovcová jezera</span>
+                <h2 class="font-display text-3xl font-bold text-stone-900 mt-2 mb-4">Černé a Čertovo jezero</h2>
+                <p class="text-stone-600 leading-relaxed mb-5">
+                    Dvě nejkrásnější šumavská ledovcová jezera dostupná pěšky přímo z hotelu. Čertovo jezero (2,5 km) lze spojit s Černým jezerem (3,5 km) v okruhu asi 9 km – perfektní celodenní výlet pro rodiny.
+                </p>
+                <div class="grid grid-cols-2 gap-3">
+                    @{
+                        var jezera = new[] {
+                            ("🌊", "Čertovo jezero", "2,5 km · 45 min"),
+                            ("🌊", "Černé jezero",    "3,5 km · 60 min"),
+                            ("🔄", "Okruh jezery",   "~9 km · 3 hod"),
+                            ("📍", "Trasa",           "Nenáročná"),
+                        };
+                    }
+                    @foreach (var (icon, name, detail) in jezera)
+                    {
+                        <div class="bg-stone-50 rounded-2xl p-4 border border-stone-100">
+                            <div class="text-xl mb-1">@icon</div>
+                            <div class="font-semibold text-stone-900 text-sm">@name</div>
+                            <div class="text-xs text-stone-400">@detail</div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="relative order-1 md:order-2">
+                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80"
+                     alt="Šumavské jezero" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl" />
+                <span class="absolute top-4 left-4 bg-white/90 text-stone-800 text-xs font-bold px-3 py-1.5 rounded-full">Celý rok</span>
+            </div>
+        </div>
+
+        <!-- BIKING -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=700&q=80"
+                     alt="Bike areál Špičák" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl" />
+                <span class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">Jaro – Podzim</span>
+            </div>
+            <div>
+                <span class="text-forest-600 text-xs font-bold uppercase tracking-widest">Bike areál Špičák</span>
+                <h2 class="font-display text-3xl font-bold text-stone-900 mt-2 mb-4">Světová cyklistika a downhill</h2>
+                <p class="text-stone-600 leading-relaxed mb-5">
+                    Bike areál Špičák patří mezi nejlepší v Evropě. 6 bikerských tras různé obtížnosti od rodinných okruhů po profesionální downhillové tratě. Každoročně se zde koná závod Světového poháru v downhillu.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    @foreach (var tag in new[] { "6 tras", "Světový pohár DH", "Půjčovna kol", "Bike servis", "Pro rodiny i profi" })
+                    {
+                        <span class="bg-forest-100 text-forest-800 text-xs font-semibold px-3 py-1.5 rounded-full">@tag</span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- LANOVKA + VRCHOLY -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <span class="text-forest-600 text-xs font-bold uppercase tracking-widest">Lanovka a vrcholy</span>
+                <h2 class="font-display text-3xl font-bold text-stone-900 mt-2 mb-4">Výhledy na Šumavu a Bavorsko</h2>
+                <p class="text-stone-600 leading-relaxed mb-5">
+                    Lanovka na vrchol Špičáku jede přímo od hotelu. Nahoře výhled na celou českou i bavorskou stranu Šumavy. Pěšky zdoláte také Pancíř (2,5 km) nebo navštívíte vodopád Bílá strž (6 km) – největší šumavský vodopád.
+                </p>
+                <div class="space-y-3">
+                    @{
+                        var vychody = new[] {
+                            ("🚡", "Lanovka Špičák",       "< 1 km od hotelu · jede celý rok"),
+                            ("🏔️", "Vrchol Pancíř 1214 m", "2,5 km pěšky · panoramatický výhled"),
+                            ("💧", "Vodopád Bílá strž",    "6 km · největší šumavský vodopád"),
+                        };
+                    }
+                    @foreach (var (icon, name, detail) in vychody)
+                    {
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">@icon</span>
+                            <div>
+                                <p class="font-semibold text-stone-900 text-sm">@name</p>
+                                <p class="text-stone-500 text-xs">@detail</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="relative order-1 md:order-2">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80"
+                     alt="Výhled na Šumavu" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl" />
+                <span class="absolute top-4 left-4 bg-white/90 text-stone-800 text-xs font-bold px-3 py-1.5 rounded-full">Celý rok</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-14 bg-forest-800">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-3">Naplánujte si pobyt</h2>
+        <p class="text-stone-300 mb-8">Hotel Karl je ideální základna pro všechny tyto výlety. Přijedete večer, ráno nastoupíte přímo na sjezdovku nebo vyrazíte na trasu.</p>
+        <a href="/#rezervace" class="bg-forest-500 hover:bg-forest-400 text-white font-bold px-10 py-4 rounded-full text-lg transition-all hover:shadow-xl inline-block">
+            Rezervovat pobyt →
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-stone-900 text-stone-400 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <div>
+            <span class="text-white font-display font-bold text-lg">Hotel Karl <span class="text-forest-400">★★★</span></span>
+            <span class="ml-3">Špičák · Šumava</span>
+        </div>
+        <div class="flex gap-6">
+            <a href="/#pokoje"    class="hover:text-white transition-colors">Pokoje</a>
+            <a href="/restaurace" class="hover:text-white transition-colors">Restaurace</a>
+            <a href="/vylety"     class="hover:text-white transition-colors">Výlety</a>
+            <a href="/galerie"    class="hover:text-white transition-colors">Galerie</a>
+            <a href="/#kontakt"   class="hover:text-white transition-colors">Kontakt</a>
+        </div>
+        <p>© 2026 Hotel Karl</p>
+    </div>
+</footer>

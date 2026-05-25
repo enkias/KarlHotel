@@ -1,0 +1,204 @@
+@{
+    ViewData["Title"] = "Restaurace – Hotel Karl Špičák";
+    ViewData["Description"] = "Restaurace Hotelu Karl na Špičáku – česká kuchyně, švédský stůl ke snídani, večeře pro ubytované. Otevřeno čtvrtek–neděle 11–19:30.";
+}
+
+<!-- NAV -->
+<nav class="bg-forest-800 sticky top-0 z-50 px-6 py-4 shadow-lg">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <a href="/" class="text-white font-display text-xl font-bold tracking-wide">Hotel Karl <span class="text-forest-400">★★★</span></a>
+        <div class="hidden md:flex items-center gap-7 text-sm text-white/80 font-medium">
+            <a href="/#pokoje"     class="hover:text-white transition-colors">Pokoje</a>
+            <a href="/restaurace"  class="text-white font-semibold border-b border-forest-400">Restaurace</a>
+            <a href="/vylety"      class="hover:text-white transition-colors">Výlety</a>
+            <a href="/galerie"     class="hover:text-white transition-colors">Galerie</a>
+            <a href="/#kontakt"    class="hover:text-white transition-colors">Kontakt</a>
+            <a href="/#rezervace"  class="bg-forest-600 hover:bg-forest-500 text-white px-5 py-2 rounded-full transition-colors font-semibold">Rezervovat</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative h-80 sm:h-[26rem] overflow-hidden">
+    <img src="http://www.karl.cz/karl/user/galerie_rest20/images/_MG_5454.jpg"
+         alt="Restaurace Hotel Karl" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/20 to-transparent"></div>
+    <div class="absolute bottom-10 left-6 right-6 max-w-6xl mx-auto">
+        <span class="text-forest-400 text-xs font-bold uppercase tracking-widest">Restaurace</span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mt-1">Domácí kuchyně<br/>s výhledem na Šumavu</h1>
+    </div>
+</section>
+
+<!-- ÚVOD + OTEVÍRACÍ DOBA -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+                <p class="text-stone-600 leading-relaxed text-lg mb-6">
+                    Naše restaurace nabízí poctivou českou kuchyni z čerstvých surovin v útulné šumavské atmosféře. Posedíte u krbu, ochutná­te místní pivo Belveder ze Železné Rudy nebo si objednáte snídani z bohatého švédského stolu.
+                </p>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-forest-50 border border-forest-200 rounded-2xl p-5">
+                        <p class="text-forest-600 text-xs font-bold uppercase tracking-widest mb-2">Otevírací doba</p>
+                        <p class="font-bold text-stone-900 text-lg">Čtvrtek – Neděle</p>
+                        <p class="text-stone-600">11:00 – 19:30</p>
+                    </div>
+                    <div class="bg-stone-50 border border-stone-200 rounded-2xl p-5">
+                        <p class="text-stone-500 text-xs font-bold uppercase tracking-widest mb-2">Večeře pro hosty</p>
+                        <p class="font-bold text-stone-900">390 Kč / dospělí</p>
+                        <p class="text-stone-600 text-sm">290 Kč / děti</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="http://www.karl.cz/karl/user/galerie_rest20/images/_MG_5417.jpg"
+                     alt="Interiér restaurace" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl" />
+                <div class="absolute -bottom-4 -left-4 bg-white border border-stone-100 rounded-2xl px-5 py-3 shadow-lg text-sm">
+                    <span class="text-forest-700 font-bold">🍺 Belveder</span>
+                    <p class="text-stone-500 text-xs mt-0.5">Místní pivovar Železná Ruda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SNÍDANĚ -->
+<section class="py-16 bg-stone-50">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <img src="http://www.karl.cz/karl/user/galerie/images/ra-P1000185.jpg"
+                 alt="Švédský stůl" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl order-2 md:order-1" />
+            <div class="order-1 md:order-2">
+                <span class="text-forest-600 text-xs font-bold uppercase tracking-widest">Snídaně</span>
+                <h2 class="font-display text-3xl font-bold text-stone-900 mt-2 mb-5">Švédský stůl – v ceně ubytování</h2>
+                <p class="text-stone-600 leading-relaxed mb-6">
+                    Každé ráno pro vás připravíme bohatý švédský stůl – čerstvé pečivo, uzeniny, sýry, vejce, jogurty, ovoce a teplé pokrmy. Silný start do dne před výletem nebo sjezdovkami.
+                </p>
+                <div class="space-y-2">
+                    @foreach (var item in new[] { "Čerstvé pečivo a máslo", "Studené mísy – uzeniny, sýry", "Teplá jídla – vejce, kaše", "Jogurty, müsli, ovoce", "Káva, čaj, džus v ceně" })
+                    {
+                        <div class="flex items-center gap-3 text-sm text-stone-600">
+                            <svg class="w-4 h-4 text-forest-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            @item
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JÍDELNÍ LÍSTEK -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="text-forest-600 text-xs font-bold uppercase tracking-widest">Jídelní lístek</span>
+            <h2 class="font-display text-3xl font-bold text-stone-900 mt-2">Ukázkové menu</h2>
+            <p class="text-stone-400 text-sm mt-2">Aktuální nabídku ověřte na recepci · menu se mění podle sezóny</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Polévky -->
+            <div class="bg-stone-50 rounded-3xl p-7 border border-stone-100">
+                <h3 class="font-display font-bold text-xl text-stone-900 mb-5 pb-3 border-b border-stone-200">Polévky</h3>
+                <div class="space-y-4">
+                    @{
+                        var polevky = new[] {
+                            ("Hovězí vývar s nudlemi",          "65 Kč"),
+                            ("Šumavská kulajda s houbami",      "75 Kč"),
+                            ("Bramborová polévka se slaninou",  "70 Kč"),
+                        };
+                    }
+                    @foreach (var (jidlo, cena) in polevky)
+                    {
+                        <div class="flex justify-between items-start text-sm">
+                            <span class="text-stone-700 leading-snug">@jidlo</span>
+                            <span class="text-forest-700 font-bold ml-4 flex-shrink-0">@cena</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Hlavní jídla -->
+            <div class="bg-stone-50 rounded-3xl p-7 border border-stone-100">
+                <h3 class="font-display font-bold text-xl text-stone-900 mb-5 pb-3 border-b border-stone-200">Hlavní jídla</h3>
+                <div class="space-y-4">
+                    @{
+                        var hlavni = new[] {
+                            ("Svíčková na smetaně, knedlík",            "265 Kč"),
+                            ("Šumavský guláš, špeková knedlík",         "195 Kč"),
+                            ("Smažený řízek, bramborový salát",         "185 Kč"),
+                            ("Pstruh na másle, vařené brambory",        "240 Kč"),
+                            ("Smažený kapr se zelím",                   "225 Kč"),
+                            ("Houbový přívarek, domácí knedlíky",       "165 Kč"),
+                        };
+                    }
+                    @foreach (var (jidlo, cena) in hlavni)
+                    {
+                        <div class="flex justify-between items-start text-sm">
+                            <span class="text-stone-700 leading-snug">@jidlo</span>
+                            <span class="text-forest-700 font-bold ml-4 flex-shrink-0">@cena</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Dezerty + Nápoje -->
+            <div class="space-y-6">
+                <div class="bg-stone-50 rounded-3xl p-7 border border-stone-100">
+                    <h3 class="font-display font-bold text-xl text-stone-900 mb-5 pb-3 border-b border-stone-200">Dezerty</h3>
+                    <div class="space-y-4">
+                        @{
+                            var dezerty = new[] {
+                                ("Jablečný štrúdl se šlehačkou",    "85 Kč"),
+                                ("Domácí tvarohový koláč",          "75 Kč"),
+                                ("Šumavský tvaroh s lesním ovocem", "80 Kč"),
+                            };
+                        }
+                        @foreach (var (jidlo, cena) in dezerty)
+                        {
+                            <div class="flex justify-between items-start text-sm">
+                                <span class="text-stone-700 leading-snug">@jidlo</span>
+                                <span class="text-forest-700 font-bold ml-4 flex-shrink-0">@cena</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="bg-forest-50 rounded-3xl p-6 border border-forest-100">
+                    <p class="text-forest-700 font-bold text-sm mb-1">🍺 Belveder – Železnorudské pivo</p>
+                    <p class="text-stone-500 text-xs">Světlý ležák z místního pivovaru · 0,5 l 60 Kč</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-14 bg-forest-800">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-3">Rezervujte ubytování se snídaní</h2>
+        <p class="text-stone-300 mb-8">Snídaně formou švédského stolu je součástí každého pobytu. Večeře za zvýhodněnou cenu pro ubytované hosty.</p>
+        <a href="/#rezervace" class="bg-forest-500 hover:bg-forest-400 text-white font-bold px-10 py-4 rounded-full text-lg transition-all hover:shadow-xl inline-block">
+            Rezervovat pobyt →
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-stone-900 text-stone-400 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <div>
+            <span class="text-white font-display font-bold text-lg">Hotel Karl <span class="text-forest-400">★★★</span></span>
+            <span class="ml-3">Špičák · Šumava</span>
+        </div>
+        <div class="flex gap-6">
+            <a href="/#pokoje"    class="hover:text-white transition-colors">Pokoje</a>
+            <a href="/restaurace" class="hover:text-white transition-colors">Restaurace</a>
+            <a href="/vylety"     class="hover:text-white transition-colors">Výlety</a>
+            <a href="/galerie"    class="hover:text-white transition-colors">Galerie</a>
+            <a href="/#kontakt"   class="hover:text-white transition-colors">Kontakt</a>
+        </div>
+        <p>© 2026 Hotel Karl</p>
+    </div>
+</footer>

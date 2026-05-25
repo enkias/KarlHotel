@@ -1,0 +1,161 @@
+@{
+    ViewData["Title"] = "Fotogalerie – Hotel Karl Špičák";
+    ViewData["Description"] = "Fotogalerie Hotelu Karl na Špičáku – pokoje, restaurace, exteriér léto a zima.";
+}
+
+<!-- NAV -->
+<nav class="bg-forest-800 sticky top-0 z-50 px-6 py-4 shadow-lg">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <a href="/" class="text-white font-display text-xl font-bold tracking-wide">Hotel Karl <span class="text-forest-400">★★★</span></a>
+        <div class="hidden md:flex items-center gap-7 text-sm text-white/80 font-medium">
+            <a href="/#pokoje"    class="hover:text-white transition-colors">Pokoje</a>
+            <a href="/restaurace" class="hover:text-white transition-colors">Restaurace</a>
+            <a href="/vylety"     class="hover:text-white transition-colors">Výlety</a>
+            <a href="/galerie"    class="text-white font-semibold border-b border-forest-400">Galerie</a>
+            <a href="/#kontakt"   class="hover:text-white transition-colors">Kontakt</a>
+            <a href="/#rezervace" class="bg-forest-600 hover:bg-forest-500 text-white px-5 py-2 rounded-full transition-colors font-semibold">Rezervovat</a>
+        </div>
+    </div>
+</nav>
+
+@{
+    var photos = new[] {
+        new { Src = "http://www.karl.cz/karl/user/galerie/images/HotelKarl-1.jpg",                Alt = "Hotel Karl – léto",            Cat = "exteriér" },
+        new { Src = "http://www.karl.cz/karl/user/galerie/images/HotelKarl-2.jpg",                Alt = "Hotel Karl – zima",             Cat = "exteriér" },
+        new { Src = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5114.jpg",             Alt = "Apartmá – obývací pokoj",       Cat = "pokoje"   },
+        new { Src = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5213.jpg",             Alt = "Apartmá – ložnice",             Cat = "pokoje"   },
+        new { Src = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5468.jpg",             Alt = "Podkrovní pokoj",               Cat = "pokoje"   },
+        new { Src = "http://www.karl.cz/karl/user/galerie_rest20/images/_MG_5417.jpg",            Alt = "Restaurace – krb a interiér",   Cat = "restaurace" },
+        new { Src = "http://www.karl.cz/karl/user/galerie_rest20/images/_MG_5454.jpg",            Alt = "Restaurace – jídelní sál",      Cat = "restaurace" },
+        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000185.jpg",                Alt = "Snídaně – švédský stůl",        Cat = "restaurace" },
+        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000183.jpg",                Alt = "Slavnostní večeře – losos",     Cat = "restaurace" },
+        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000182.jpg",                Alt = "Slavnostní večeře – maso",      Cat = "restaurace" },
+        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000186.jpg",                Alt = "Slavnostní večeře – roastbeef", Cat = "restaurace" },
+    };
+}
+
+<div x-data="galerie()" class="min-h-screen bg-stone-950">
+
+    <!-- HERO -->
+    <div class="relative h-56 overflow-hidden">
+        <img src="http://www.karl.cz/karl/user/galerie/images/HotelKarl-1.jpg"
+             alt="Hotel Karl" class="w-full h-full object-cover opacity-50" />
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+            <span class="text-forest-400 text-xs font-bold uppercase tracking-widest mb-2">Fotogalerie</span>
+            <h1 class="font-display text-4xl sm:text-5xl font-bold text-white">Hotel Karl</h1>
+            <p class="text-stone-300 mt-2 text-sm">Špičák · Šumava</p>
+        </div>
+    </div>
+
+    <!-- FILTRY -->
+    <div class="sticky top-[64px] z-40 bg-stone-950/90 backdrop-blur-sm border-b border-stone-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-3">
+            <template x-for="f in filters" :key="f.id">
+                <button x-on:click="active = f.id"
+                        :class="active === f.id
+                            ? 'bg-forest-600 text-white'
+                            : 'bg-stone-800 text-stone-300 hover:bg-stone-700'"
+                        class="px-5 py-2 rounded-full text-sm font-semibold transition-colors">
+                    <span x-text="f.label"></span>
+                    <span x-show="active === f.id" class="ml-1.5 text-xs opacity-70"
+                          x-text="'(' + filtered.length + ')'"></span>
+                </button>
+            </template>
+        </div>
+    </div>
+
+    <!-- MASONRY GRID -->
+    <div class="max-w-6xl mx-auto px-6 py-10">
+        <div class="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+            <template x-for="(p, i) in filtered" :key="p.src">
+                <div class="break-inside-avoid overflow-hidden rounded-2xl group cursor-zoom-in"
+                     x-on:click="open(i)">
+                    <img :src="p.src" :alt="p.alt"
+                         class="w-full block group-hover:scale-105 group-hover:brightness-110 transition-all duration-500"
+                         loading="lazy" />
+                </div>
+            </template>
+        </div>
+
+        <p x-show="filtered.length === 0" class="text-center text-stone-500 py-20 text-lg">
+            Žádné fotky v této kategorii.
+        </p>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div x-show="lightbox !== null"
+         x-transition:enter="transition-opacity duration-200"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity duration-150"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         x-on:click.self="lightbox = null"
+         x-on:keydown.escape.window="lightbox = null"
+         x-on:keydown.arrow-left.window="prev()"
+         x-on:keydown.arrow-right.window="next()"
+         class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+         x-cloak>
+
+        <button x-on:click="lightbox = null"
+                class="absolute top-5 right-5 text-white/60 hover:text-white transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <button x-on:click="prev()"
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors text-xl">
+            ‹
+        </button>
+        <button x-on:click="next()"
+                class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors text-xl">
+            ›
+        </button>
+
+        <div x-show="lightbox !== null" class="max-w-5xl max-h-[85vh] w-full">
+            <img :src="filtered[lightbox]?.src" :alt="filtered[lightbox]?.alt"
+                 class="max-w-full max-h-[80vh] mx-auto rounded-xl shadow-2xl object-contain" />
+            <p class="text-center text-stone-400 text-sm mt-4" x-text="filtered[lightbox]?.alt"></p>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-stone-950 border-t border-stone-800 text-stone-500 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <span class="text-white font-display font-bold text-lg">Hotel Karl <span class="text-forest-400">★★★</span></span>
+        <div class="flex gap-6">
+            <a href="/#pokoje"    class="hover:text-white transition-colors">Pokoje</a>
+            <a href="/restaurace" class="hover:text-white transition-colors">Restaurace</a>
+            <a href="/vylety"     class="hover:text-white transition-colors">Výlety</a>
+            <a href="/#kontakt"   class="hover:text-white transition-colors">Kontakt</a>
+        </div>
+        <p>© 2026 Hotel Karl</p>
+    </div>
+</footer>
+
+@section Scripts {
+<script>
+function galerie() {
+    const all = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(photos.Select(p => new { src = p.Src, alt = p.Alt, cat = p.Cat })));
+    return {
+        active: 'vse',
+        lightbox: null,
+        filters: [
+            { id: 'vse',       label: 'Vše' },
+            { id: 'exteriér',  label: 'Exteriér' },
+            { id: 'pokoje',    label: 'Pokoje' },
+            { id: 'restaurace',label: 'Restaurace' },
+        ],
+        get filtered() {
+            return this.active === 'vse' ? all : all.filter(p => p.cat === this.active);
+        },
+        open(i) { this.lightbox = i; },
+        prev() { if (this.lightbox > 0) this.lightbox--; else this.lightbox = this.filtered.length - 1; },
+        next() { if (this.lightbox < this.filtered.length - 1) this.lightbox++; else this.lightbox = 0; },
+    };
+}
+</script>
+}
