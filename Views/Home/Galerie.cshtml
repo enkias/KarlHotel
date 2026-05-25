@@ -1,4 +1,4 @@
-@{
+﻿@{
     ViewData["Title"] = "Fotogalerie – Hotel Karl Špičák";
     ViewData["Description"] = "Fotogalerie Hotelu Karl na Špičáku – pokoje, restaurace, exteriér léto a zima.";
 }
@@ -20,17 +20,17 @@
 
 @{
     var photos = new[] {
-        new { Src = "http://www.karl.cz/karl/user/galerie/images/HotelKarl-1.jpg",                Alt = "Hotel Karl – léto",            Cat = "exteriér" },
-        new { Src = "http://www.karl.cz/karl/user/galerie/images/HotelKarl-2.jpg",                Alt = "Hotel Karl – zima",             Cat = "exteriér" },
-        new { Src = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5114.jpg",             Alt = "Apartmá – obývací pokoj",       Cat = "pokoje"   },
-        new { Src = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5213.jpg",             Alt = "Apartmá – ložnice",             Cat = "pokoje"   },
-        new { Src = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5468.jpg",             Alt = "Podkrovní pokoj",               Cat = "pokoje"   },
-        new { Src = "http://www.karl.cz/karl/user/galerie_rest20/images/_MG_5417.jpg",            Alt = "Restaurace – krb a interiér",   Cat = "restaurace" },
-        new { Src = "http://www.karl.cz/karl/user/galerie_rest20/images/_MG_5454.jpg",            Alt = "Restaurace – jídelní sál",      Cat = "restaurace" },
-        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000185.jpg",                Alt = "Snídaně – švédský stůl",        Cat = "restaurace" },
-        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000183.jpg",                Alt = "Slavnostní večeře – losos",     Cat = "restaurace" },
-        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000182.jpg",                Alt = "Slavnostní večeře – maso",      Cat = "restaurace" },
-        new { Src = "http://www.karl.cz/karl/user/galerie/images/ra-P1000186.jpg",                Alt = "Slavnostní večeře – roastbeef", Cat = "restaurace" },
+        new { Src = "/images/HotelKarl-1.jpg",                Alt = "Hotel Karl – léto",            Cat = "exteriér" },
+        new { Src = "/images/HotelKarl-2.jpg",                Alt = "Hotel Karl – zima",             Cat = "exteriér" },
+        new { Src = "/images/pokoj-1.jpg",             Alt = "Apartmá – obývací pokoj",       Cat = "pokoje"   },
+        new { Src = "/images/pokoj-2.jpg",             Alt = "Apartmá – ložnice",             Cat = "pokoje"   },
+        new { Src = "/images/pokoj-3.jpg",             Alt = "Podkrovní pokoj",               Cat = "pokoje"   },
+        new { Src = "/images/restaurace-1.jpg",            Alt = "Restaurace – krb a interiér",   Cat = "restaurace" },
+        new { Src = "/images/restaurace-2.jpg",            Alt = "Restaurace – jídelní sál",      Cat = "restaurace" },
+        new { Src = "/images/snidane-1.jpg",                Alt = "Snídaně – švédský stůl",        Cat = "restaurace" },
+        new { Src = "/images/snidane-2.jpg",                Alt = "Slavnostní večeře – losos",     Cat = "restaurace" },
+        new { Src = "/images/snidane-3.jpg",                Alt = "Slavnostní večeře – maso",      Cat = "restaurace" },
+        new { Src = "/images/snidane-4.jpg",                Alt = "Slavnostní večeře – roastbeef", Cat = "restaurace" },
     };
 }
 
@@ -38,7 +38,7 @@
 
     <!-- HERO -->
     <div class="relative h-56 overflow-hidden">
-        <img src="http://www.karl.cz/karl/user/galerie/images/HotelKarl-1.jpg"
+        <img src="/images/HotelKarl-1.jpg"
              alt="Hotel Karl" class="w-full h-full object-cover opacity-50" />
         <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
             <span class="text-forest-400 text-xs font-bold uppercase tracking-widest mb-2">Fotogalerie</span>

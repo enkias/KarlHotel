@@ -1,4 +1,4 @@
-@{
+﻿@{
     ViewData["Title"] = "Hotel Karl Špičák – Ubytování na Šumavě";
     ViewData["Description"] = "Rodinný hotel Karl na Špičáku, Železná Ruda – Šumava. Ubytování s snídaní, restaurace, lyžování, turistika. Rezervujte přímo – nejlepší cena zaručena.";
 }
@@ -136,9 +136,9 @@
         <div class="grid md:grid-cols-3 gap-8">
             @{
                 var pokoje = new[] {
-                    new { Img = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5114.jpg", Nadpis = "Apartmá se 2 ložnicemi", Popis = "Prostorné apartmá pro rodiny – 2 ložnice (až 6 lůžek), velký obývací pokoj, koupelna s vanou i sprchou, balkon s výhledem do hor.", Cena = "od 1 190 Kč / os / noc", Badge = "Nejprostornější", Pocet = "1×" },
-                    new { Img = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5213.jpg", Nadpis = "Apartmá s 1 ložnicí", Popis = "Útulné apartmá pro páry nebo rodiny – ložnice, obývací pokoj, koupelna. Většina disponuje balkonem. Lednička, Wi-Fi.", Cena = "od 1 190 Kč / os / noc", Badge = "Nejoblíbenější", Pocet = "9×" },
-                    new { Img = "http://www.karl.cz/karl/user/galerie_pok20/images/_MG_5468.jpg", Nadpis = "Dvoulůžkový pokoj", Popis = "Komfortní pokoj pro 2 osoby – ložnice s koupelnou, lednička, parkoviště zdarma. Ideální pro výletníky nebo lyžaře.", Cena = "od 1 390 Kč / os / noc", Badge = "Pro páry", Pocet = "4×" },
+                    new { Img = "/images/pokoj-1.jpg", Nadpis = "Apartmá se 2 ložnicemi", Popis = "Prostorné apartmá pro rodiny – 2 ložnice (až 6 lůžek), velký obývací pokoj, koupelna s vanou i sprchou, balkon s výhledem do hor.", Cena = "od 1 190 Kč / os / noc", Badge = "Nejprostornější", Pocet = "1×" },
+                    new { Img = "/images/pokoj-2.jpg", Nadpis = "Apartmá s 1 ložnicí", Popis = "Útulné apartmá pro páry nebo rodiny – ložnice, obývací pokoj, koupelna. Většina disponuje balkonem. Lednička, Wi-Fi.", Cena = "od 1 190 Kč / os / noc", Badge = "Nejoblíbenější", Pocet = "9×" },
+                    new { Img = "/images/pokoj-3.jpg", Nadpis = "Dvoulůžkový pokoj", Popis = "Komfortní pokoj pro 2 osoby – ložnice s koupelnou, lednička, parkoviště zdarma. Ideální pro výletníky nebo lyžaře.", Cena = "od 1 390 Kč / os / noc", Badge = "Pro páry", Pocet = "4×" },
                 };
             }
             @foreach (var p in pokoje)
@@ -232,7 +232,7 @@
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-16 items-center">
             <div class="relative">
-                <img src="http://www.karl.cz/karl/user/galerie/images/ra-P1000185.jpg"
+                <img src="/images/snidane-1.jpg"
                      alt="Restaurace" class="rounded-3xl w-full aspect-[4/3] object-cover shadow-xl" />
                 <div class="absolute -bottom-5 -right-5 bg-forest-600 text-white rounded-2xl px-6 py-4 shadow-lg">
                     <p class="text-xs font-semibold text-forest-200 mb-1">Otevírací doba</p>
@@ -602,8 +602,8 @@ function heroSlider() {
     return {
         current: 0,
         slides: [
-            { img: 'http://www.karl.cz/karl/user/galerie/images/HotelKarl-1.jpg', alt: 'Hotel Karl léto',    badge: 'Špičák · Železná Ruda · Šumava · 1000 m n.m.' },
-            { img: 'http://www.karl.cz/karl/user/galerie/images/HotelKarl-2.jpg', alt: 'Hotel Karl zima',    badge: '❄️ Lyžování přímo od hotelu' },
+            { img: '/images/HotelKarl-1.jpg', alt: 'Hotel Karl léto',    badge: 'Špičák · Železná Ruda · Šumava · 1000 m n.m.' },
+            { img: '/images/HotelKarl-2.jpg', alt: 'Hotel Karl zima',    badge: '❄️ Lyžování přímo od hotelu' },
             { img: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1600&q=80', alt: 'Sjezdovky Špičák',     badge: '⛷️ Ski areál Špičák – přímo u dveří' },
             { img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80', alt: 'Šumavská příroda', badge: '🥾 Turistika – Černé jezero 3,5 km' },
         ],
